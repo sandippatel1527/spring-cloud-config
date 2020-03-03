@@ -1,0 +1,48 @@
+server:
+  port: 0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+logging:
+  level:
+    ROOT: ERROR
+    com.bootcamp: DEBUG
+    org.springframework: ERROR
+    org.springframework.kafka: DEBUG
+    io.confluent: DEBUG
+pattern:
+  console: "%d %-5level %logger : %msg%n"
+
+kafka:
+  bootstrap-servers: "localhost:9092"
+  schema-registry: http://localhost:8081
+  consumer:
+    auto-commit-interval-in-ms: 100
+    enable-auto-commit: false
+    session-timeout-in-ms: 30000
+    auto-offset-reset: earliest
+    fetch-max-wait-in-ms: 200
+    max-partition-fetch-bytes: 50331648
+    min-partition-fetch-bytes: 50331648
+    max-poll-records: 5000
+    consumer-group-id: cdc-consumer-test-3
+    topic-name: cdc-indvinq
+    concurrency-level: 5
+  publisher:
+    buffer-memory: 33554432
+    linger-time-in-ms: 5
+    publish-batch-size: 16384
+    retry-count: 0
+    topic-name: avro-indvinq
+    error-topic: cdc-indvinq-error
