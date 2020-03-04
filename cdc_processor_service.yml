@@ -25,8 +25,8 @@ pattern:
   console: "%d %-5level %logger : %msg%n"
 
 kafka:
-  bootstrap-servers: "localhost:9092"
-  schema-registry: http://localhost:8081
+  bootstrap-servers: ${BOOTSTRAP_HOST:localhost}:9092
+  schema-registry: ${SCHEMA_HOST:localhost}:8081
   consumer:
     auto-commit-interval-in-ms: 100
     enable-auto-commit: false
