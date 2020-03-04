@@ -35,7 +35,7 @@ spring:
 
 kafka:
   bootstrap-servers: ${BOOTSTRAP_HOST:localhost}:9092
-  schema-registry: ${SCHEMA_HOST:localhost}:8081
+  schema-registry: http://${SCHEMA_HOST:localhost}:8081
   consumer:
     auto-commit-interval-in-ms: 100
     enable-auto-commit: false
