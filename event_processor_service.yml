@@ -7,6 +7,11 @@ management:
       exposure:
         include: '*'
 
+eureka:
+  client:
+    enabled: false
+
+
 logging:
   level:
     ROOT: ERROR
@@ -27,6 +32,12 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create-drop
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 1000
+          order_inserts: true
+        generate_statistics: true
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
     port: 5672
@@ -44,8 +55,10 @@ kafka:
     fetch-max-wait-in-ms: 200
     max-partition-fetch-bytes: 50331648
     min-partition-fetch-bytes: 50331648
-    max-poll-records: 5000
-    consumer-group-id: event-consumer-test-3
-    topic-name: avro-indvinq
+    max-poll-records: 1000
+    consumer-group-id: event-consumer-63
     concurrency-level: 5
-
+    indv:
+      topic-name: avro-indvinq
+    org:
+      topic-name: avro-orginq
