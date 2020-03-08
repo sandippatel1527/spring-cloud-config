@@ -6,6 +6,9 @@ management:
     web:
       exposure:
         include: '*'
+eureka:
+  client:
+    enabled: false
 
 spring:
   rabbitmq:
@@ -17,10 +20,10 @@ spring:
 logging:
   level:
     ROOT: ERROR
-    com.bootcamp: DEBUG
+    com.bootcamp: ERROR
     org.springframework: ERROR
-    org.springframework.kafka: DEBUG
-    io.confluent: DEBUG
+    org.springframework.kafka: ERROR
+    io.confluent: ERROR
 pattern:
   console: "%d %-5level %logger : %msg%n"
 
@@ -35,14 +38,21 @@ kafka:
     fetch-max-wait-in-ms: 200
     max-partition-fetch-bytes: 50331648
     min-partition-fetch-bytes: 50331648
-    max-poll-records: 5000
-    consumer-group-id: cdc-consumer-test-3
-    topic-name: cdc-indvinq
-    concurrency-level: 5
+    max-poll-records: 100
+    concurrency-level: 1
+    consumer-group-id: cdc-consumer-27
+    indv:
+      topic-name: cdc-indvinq
+    org:
+      topic-name: cdc-orginq
   publisher:
     buffer-memory: 33554432
     linger-time-in-ms: 5
     publish-batch-size: 16384
     retry-count: 0
-    topic-name: avro-indvinq
-    error-topic: cdc-indvinq-error
+    indv:
+      topic-name: avro-indvinq
+      error-topic: cdc-indvinq-error
+    org:
+      topic-name: avro-orginq
+      error-topic: cdc-orginq-error
