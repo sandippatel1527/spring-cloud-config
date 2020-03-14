@@ -6,9 +6,10 @@ management:
     web:
       exposure:
         include: '*'
-eureka:
-  client:
-    enabled: false
+# disable eureka client discovery
+#eureka:
+#  client:
+#    enabled: false
 
 spring:
   rabbitmq:
@@ -40,11 +41,12 @@ kafka:
     min-partition-fetch-bytes: 50331648
     max-poll-records: 100
     concurrency-level: 1
-    consumer-group-id: cdc-consumer-27
     indv:
       topic-name: cdc-indvinq
+      consumer-group-id: cdc-indv-consumer-58
     org:
       topic-name: cdc-orginq
+      consumer-group-id: cdc-org-consumer-58
   publisher:
     buffer-memory: 33554432
     linger-time-in-ms: 5
